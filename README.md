@@ -5,3 +5,4 @@ The GUI is coded in PyQt6 primarily. There is an introduction screen explaining 
 There is also multiple options for which type of consulting scenarion you would like the Assistant to generate. 
 
 *Enter own API Key in .env and run main.py to display the program*
+https://openai.com/api/
