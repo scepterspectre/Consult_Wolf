@@ -8,3 +8,9 @@ Named after Winston Wolf from 'Pulp Fiction'
 
 *Enter own API Key in .env and run main.py to display the program*
 https://openai.com/api/
+
+Steps to get API key:
+1) Sign up / Login at link
+2) Press personal in top right
+3) Select "View API keys" in dropdown
+4) Create new secret key and copy paste key into .env 
