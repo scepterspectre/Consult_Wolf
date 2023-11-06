@@ -84,7 +84,7 @@ feedback_text = QTextEdit()
 reset_button = QPushButton("Reset")  # Create the reset button
 
 # Set the font of the labels and buttons to a modern sans-serif font
-font = QFont("Helvetica Neue", 14)
+font = QFont("Tahoma", 12)
 question_label.setFont(font)
 generate_button.setFont(font)
 thought_process_label.setFont(font)
