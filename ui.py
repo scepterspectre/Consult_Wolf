@@ -29,15 +29,24 @@ def generate_question(question_text_widget, question_type_combo_box):
     # Use the appropriate prompt for the selected question type
     prompt = question_types[question_type]
 
-    # Use the ChatGPT API to generate a question based on the prompt and display it in the given widget
+    # Use the OpenAI API to generate a question based on the prompt and display it in the given widget
     try:
-        completions = openai.Completion.create(engine="text-davinci-002", prompt=prompt, max_tokens=1024, n=1,
-                                               stop=None, temperature=0.5)
-    except openai.api_services.api_service.ApiException:
-        print("Error: OpenAI API request failed. Please check your API key and try again.")
-        exit()
-    message = completions.choices[0].text
-    question_text_widget.setText(message)
+        completions = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.5
+        )
+        message = completions.choices[0].text.strip()  # Added strip() to clean up any leading/trailing whitespace
+        question_text_widget.setText(message)
+    except RateLimitError:
+        print("Error: Rate limit exceeded. Please check your OpenAI API usage.")
+    except OpenAIError as e:
+        print(f"Error: An OpenAI API error occurred: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
 def grade_thought_process(thought_process, follow_up_questions_text_widget):
